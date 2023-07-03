@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Que 23</title>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .change-color-button{
+            margin-top: 20%;
+            padding: 20px;
+            border-radius: 7px;
+            font-size: 17px;
+            font-weight: 700;
+            color: aliceblue;
+            border: 2px solid black;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <button class="change-color-button">Change Color</button>
+
+    <script>
+      const colors = [
+        'red',
+        'green',
+        'blue',
+        'yellow',
+        'orange',
+        'purple',
+        'pink',
+        'teal',
+        'gray',
+        'brown'
+      ];
+  
+      const button = document.querySelector('.change-color-button');
+  
+      function changeBackgroundColor() {
+        const randomIndex = Math.floor(Math.random() * colors.length);
+        const randomColor = colors[randomIndex];
+        document.body.style.backgroundColor = randomColor;
+      }
+  
+      button.addEventListener('click', changeBackgroundColor);
+      </script>
+</body>
+</html>

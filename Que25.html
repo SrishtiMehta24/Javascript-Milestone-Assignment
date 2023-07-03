@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Move Image with Arrow Keys</title>
+  <style>
+    #image {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <img id="image" src="https://images.pexels.com/photos/16550410/pexels-photo-16550410/free-photo-of-coctel.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load" alt="Moving Image" height="400px">
+
+  <script>
+    const image = document.getElementById('image');
+    let posX = 0;
+    let posY = 0;
+    const step = 10;
+
+    function moveImage(direction) {
+      switch (direction) {
+        case 'ArrowLeft':
+          posX -= step;
+          break;
+        case 'ArrowRight':
+          posX += step;
+          break;
+        case 'ArrowUp':
+          posY -= step;
+          break;
+        case 'ArrowDown':
+          posY += step;
+          break;
+      }
+      
+      image.style.left = `${posX}px`;
+      image.style.top = `${posY}px`;
+    }
+
+    document.addEventListener('keydown', function(event) {
+      const key = event.key;
+      moveImage(key);
+    });
+  </script>
+</body>
+</html>

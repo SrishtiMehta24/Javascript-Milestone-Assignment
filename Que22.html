@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Scroll Progress Bar</title>
+  <style>
+    #progressBar {
+      width: 0;
+      height: 5px;
+      background-color: blue;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      transition: width 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <div id="progressBar"></div>
+
+  <script> 
+    const progressBar = document.getElementById('progressBar');
+
+    function updateProgressBar() {
+      const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableDistance = documentHeight - windowHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      const progress = (scrollTop / scrollableDistance) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    window.addEventListener('scroll', updateProgressBar);
+  </script>
+</body>
+</html>

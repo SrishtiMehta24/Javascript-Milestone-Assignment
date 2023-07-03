@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Highlighting</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <p id="paragraph">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies dictum tellus, eu elementum libero ultricies ac. Vestibulum tristique cursus odio, eget pharetra quam efficitur non. Duis faucibus dui vitae lectus condimentum, sit amet vulputate odio aliquet. Mauris malesuada finibus viverra.
+  </p>
+
+  <script>
+    const paragraph = document.getElementById('paragraph');
+    const textNodes = getTextNodes(paragraph);
+
+    textNodes.forEach(textNode => {
+      const words = textNode.nodeValue.split(' ');
+
+      const highlightedWords = words.map(word => {
+        if (word.length > 8) {
+          const span = document.createElement('span');
+          span.textContent = word;
+          span.classList.add('highlight');
+          return span.outerHTML;
+        }
+        return word;
+      });
+
+      textNode.parentNode.innerHTML = highlightedWords.join(' ');
+    });
+
+    function getTextNodes(element) {
+      const treeWalker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+      const textNodes = [];
+
+      while (treeWalker.nextNode()) {
+        textNodes.push(treeWalker.currentNode);
+      }
+
+      return textNodes;
+    }
+  </script>
+</body>
+</html>

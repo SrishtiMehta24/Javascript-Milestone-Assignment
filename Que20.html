@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add List Items</title>
+</head>
+<body>
+  <h2>What you'll learn:</h2>
+  <ol id="list"></ol>
+  <button id="addItemBtn">Add Item</button>
+
+  <script>
+    const items = [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Web Design",
+      "APIs",
+      "Version Control",
+      "Debugging",
+      "Problem Solving"
+    ];
+
+    const list = document.getElementById("list");
+    const addItemBtn = document.getElementById("addItemBtn");
+
+    let currentIndex = 0;
+
+    function addListItem() {
+      if (currentIndex < items.length) {
+        const newItem = document.createElement("li");
+        newItem.textContent = items[currentIndex];
+        list.appendChild(newItem);
+        currentIndex++;
+      } else {
+        addItemBtn.disabled = true;
+        alert("All items have been added.");
+      }
+    }
+
+    addItemBtn.addEventListener("click", addListItem);
+  </script>
+</body>
+</html>
